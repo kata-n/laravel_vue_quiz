@@ -1,11 +1,13 @@
-// ==============================
-// 変数定義
-// ==============================
-//余白
-$space_s: 0.3rem;
-$space_m: 1rem; //16px
-$space_l: 1.5rem;
-$space_xl: 2.0rem;
-//文字サイズ
-$font-size_20px: 20px;
-$font-size_18px: 18px;
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+@import "setting/variables.scss";
+@import "setting/media.scss";
+@import "layout/header.scss";
+@import "layout/footer.scss";
+@import "layout/layout.scss";
+
+@import "module/button.scss";
+@import "module/sidebar.scss";
+@import "pages/home.scss";
+@import "pages/quiz.scss";
