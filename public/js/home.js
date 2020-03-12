@@ -216,6 +216,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -34813,7 +34814,7 @@ var staticRenderFns = [
         _c("a", { attrs: { href: "/" } }, [
           _c("img", {
             staticClass: "header-nav__logo",
-            attrs: { src: "/public/images/header-logo.png" }
+            attrs: { src: "/images/header-logo.png" }
           })
         ])
       ]),
@@ -35261,7 +35262,7 @@ var staticRenderFns = [
       _c("h2", { staticClass: "home-quiz__introduction-h2" }, [
         _c("img", {
           staticClass: "home-quiz__introduction-h2-logo",
-          attrs: { src: "/public/images/what-is-mark.png" }
+          attrs: { src: "/images/what-is-mark.png" }
         }),
         _vm._v("4 Answers Quizとは?\n          ")
       ]),
@@ -35285,7 +35286,7 @@ var staticRenderFns = [
       _c("h2", { staticClass: "home-quiz__setting-h2" }, [
         _c("img", {
           staticClass: "home-quiz__setting-h2-logo",
-          attrs: { src: "/public/images/directory-icon.png" }
+          attrs: { src: "/images/directory-icon.png" }
         }),
         _vm._v("出題設定\n          ")
       ]),
@@ -35384,7 +35385,7 @@ var staticRenderFns = [
     return _c("h2", { staticClass: "home-quiz__ranking-h2" }, [
       _c("img", {
         staticClass: "home-quiz__ranking-h2-logo",
-        attrs: { src: "/public/images/graph-icon.png" }
+        attrs: { src: "/images/graph-icon.png" }
       }),
       _vm._v("ランキング\n          ")
     ])
@@ -35432,7 +35433,7 @@ var staticRenderFns = [
       _c("h2", { staticClass: "home__notice-h2" }, [
         _c("img", {
           staticClass: "home__notice-h2-logo",
-          attrs: { src: "/public/images/news-icon.png" }
+          attrs: { src: "/images/news-icon.png" }
         }),
         _vm._v("お知らせ情報\n          ")
       ]),
@@ -48333,7 +48334,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleNotFoundError: Module not found: Error: Can't resolve '../fonts/NasuM-Regular.ttf' in '/Applications/MAMP/htdocs/laravel_vue_quiz/resources/sass'\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/webpack/lib/Compilation.js:925:10\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/webpack/lib/NormalModuleFactory.js:401:22\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/webpack/lib/NormalModuleFactory.js:130:21\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/webpack/lib/NormalModuleFactory.js:224:22\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/neo-async/async.js:2830:7\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/neo-async/async.js:6877:13\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/webpack/lib/NormalModuleFactory.js:214:25\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/Resolver.js:213:14\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:13:1)\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/UnsafeCachePlugin.js:44:7\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:13:1)\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:25:1)\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:67:43\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:14:1)\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:25:1)\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:67:43\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:14:1)\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:13:1)\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js:27:15\n    at /Applications/MAMP/htdocs/laravel_vue_quiz/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 

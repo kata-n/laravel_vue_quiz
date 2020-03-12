@@ -726,7 +726,7 @@ var staticRenderFns = [
         _c("a", { attrs: { href: "/" } }, [
           _c("img", {
             staticClass: "header-nav__logo",
-            attrs: { src: "/public/images/header-logo.png" }
+            attrs: { src: "/images/header-logo.png" }
           })
         ])
       ]),
@@ -1152,9 +1152,9 @@ var staticRenderFns = [
         _c("h2", { staticClass: "quiz-question-h2" }, [
           _c("img", {
             staticClass: "quiz-question__logo",
-            attrs: { src: "public/images/what-is-mark.png" }
+            attrs: { src: "/images/what-is-mark.png" }
           }),
-          _vm._v("\n              第1問\n            ")
+          _vm._v("\n            第1問\n          ")
         ]),
         _vm._v(" "),
         _c("p", [_vm._v("正しい敬語を使った表現を１つ選んでください。")]),
@@ -1164,28 +1164,28 @@ var staticRenderFns = [
             _c("li", [
               _c("a", [_c("button", [_vm._v("1")])]),
               _vm._v(
-                "\n                  受付でうかがってください。\n                "
+                "\n                受付でうかがってください。\n              "
               )
             ]),
             _vm._v(" "),
             _c("li", [
               _c("a", [_c("button", [_vm._v("2")])]),
               _vm._v(
-                "\n                  課長がおっしゃったように、ファイルをご覧ください。\n                "
+                "\n                課長がおっしゃったように、ファイルをご覧ください。\n              "
               )
             ]),
             _vm._v(" "),
             _c("li", [
               _c("a", [_c("button", [_vm._v("3")])]),
               _vm._v(
-                "\n                  部長が申されたように進めていきます。\n                "
+                "\n                部長が申されたように進めていきます。\n              "
               )
             ]),
             _vm._v(" "),
             _c("li", [
               _c("a", [_c("button", [_vm._v("4")])]),
               _vm._v(
-                "\n                  ○△商事の□□様がお越しになられました。\n                "
+                "\n                ○△商事の□□様がお越しになられました。\n              "
               )
             ])
           ])
@@ -1196,9 +1196,9 @@ var staticRenderFns = [
         _c("h2", { staticClass: "quiz-correct-h2" }, [
           _c("img", {
             staticClass: "quiz-correct__logo",
-            attrs: { src: "public/images/correct-mark.png" }
+            attrs: { src: "/images/correct-mark.png" }
           }),
-          _vm._v("正解\n            ")
+          _vm._v("正解\n          ")
         ]),
         _vm._v(" "),
         _c("p", [
@@ -1220,42 +1220,42 @@ var staticRenderFns = [
         _c("h2", { staticClass: "quiz-commentary-h2" }, [
           _c("img", {
             staticClass: "quiz-commentary__logo",
-            attrs: { src: "public/images/commentary-mark.png" }
+            attrs: { src: "/images/commentary-mark.png" }
           }),
-          _vm._v("解説\n            ")
+          _vm._v("解説\n          ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "quiz-commentary__text" }, [
-          _vm._v("\n              1）3）4）は、どこが間違っていたの？ "),
+          _vm._v("\n            1）3）4）は、どこが間違っていたの？ "),
           _c("br"),
-          _vm._v("\n              1）受付でうかがってください。"),
+          _vm._v("\n            1）受付でうかがってください。"),
           _c("br"),
           _vm._v(
-            "\n              「うかがう」は謙譲語。謙譲語は自分または身内（自分の会社も含みます）の者に使う言葉で、相手に使うのは間違いです。"
+            "\n            「うかがう」は謙譲語。謙譲語は自分または身内（自分の会社も含みます）の者に使う言葉で、相手に使うのは間違いです。"
           ),
           _c("br"),
-          _vm._v("\n              『受付でお尋ねください。』が正解です。"),
+          _vm._v("\n            『受付でお尋ねください。』が正解です。"),
           _c("br"),
           _c("br"),
-          _vm._v("\n              3）部長が申されたように進めていきます。"),
-          _c("br"),
-          _vm._v(
-            "\n              「申す」も謙譲語です。謙譲語にれる・られるを付けても尊敬語にはなりません。"
-          ),
+          _vm._v("\n            3）部長が申されたように進めていきます。"),
           _c("br"),
           _vm._v(
-            "\n              『社長がおっしゃったように進めていきます。』が正解です。"
-          ),
-          _c("br"),
-          _c("br"),
-          _vm._v("\n              4）○△商事の□□様がお越しになられました。"),
-          _c("br"),
-          _vm._v(
-            "\n              「なられました」は二重敬語の典型的な表現です。"
+            "\n            「申す」も謙譲語です。謙譲語にれる・られるを付けても尊敬語にはなりません。"
           ),
           _c("br"),
           _vm._v(
-            "\n              『○△商事の□□様がお越しになりました。』が正解です。"
+            "\n            『社長がおっしゃったように進めていきます。』が正解です。"
+          ),
+          _c("br"),
+          _c("br"),
+          _vm._v("\n            4）○△商事の□□様がお越しになられました。"),
+          _c("br"),
+          _vm._v(
+            "\n            「なられました」は二重敬語の典型的な表現です。"
+          ),
+          _c("br"),
+          _vm._v(
+            "\n            『○△商事の□□様がお越しになりました。』が正解です。"
           ),
           _c("br")
         ]),
