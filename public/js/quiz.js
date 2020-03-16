@@ -176,11 +176,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -189,6 +184,44 @@ __webpack_require__.r(__webpack_exports__);
     TheHeader: _layout_TheHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     TheFooter: _layout_TheFooter__WEBPACK_IMPORTED_MODULE_1__["default"],
     TheSidebar: _layout_TheSidebar__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      quizData: [],
+      title: "",
+      imageSrc: "",
+      answers: [],
+      commentary: "",
+      correctAnswerNo: 0,
+      isCorrect: false,
+      isMistake: false,
+      isAlreadyAnswered: false,
+      isQuizFinish: false,
+      score: 0,
+      quizNumber: 1,
+      categoryName: ""
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var categories = this.$route.query.categories;
+    this.$http.get("/api/quiz?categories=".concat(categories)).then(function (response) {
+      _this.quizData = response.data;
+
+      _this.findNextQuiz(0);
+
+      console.log(_this.quizData);
+    });
+  },
+  methods: {
+    findNextQuiz: function findNextQuiz(quizNumber) {
+      this.title = this.quizData[quizNumber].title;
+      this.answers = [this.quizData[quizNumber].answer.answer_1, this.quizData[quizNumber].answer.answer_2, this.quizData[quizNumber].answer.answer_3, this.quizData[quizNumber].answer.answer_4];
+      this.commentary = this.quizData[quizNumber].answer.commentary;
+      this.correctAnswerNo = this.quizData[quizNumber].answer.correct_answer_no;
+      this.categoryName = this.quizData[quizNumber].category.name;
+    }
   }
 });
 
@@ -1132,7 +1165,188 @@ var render = function() {
         _c(
           "div",
           { staticClass: "container" },
-          [_vm._m(0), _vm._v(" "), _c("the-sidebar")],
+          [
+            _c("article", { staticClass: "col-md-8 col-xs-12" }, [
+              _c("section", [
+                _c("h2", { staticClass: "quiz-question-h2" }, [
+                  _c("img", {
+                    staticClass: "quiz-question__logo",
+                    attrs: { src: "/images/what-is-mark.png" }
+                  }),
+                  _vm._v(
+                    "\n            第" +
+                      _vm._s(_vm.quizNumber) +
+                      "問\n          "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.title))]),
+                _vm._v(" "),
+                _c("div", { staticClass: "quiz-answer__list" }, [
+                  _c(
+                    "ul",
+                    _vm._l(_vm.answers, function(answer, index) {
+                      return _c("li", { key: index }, [
+                        _c("a", [
+                          _c(
+                            "button",
+                            {
+                              attrs: { disabled: _vm.isAlreadyAnswered },
+                              on: {
+                                click: function($event) {
+                                  return _vm.goAnswer(index + 1)
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(index + 1))]
+                          )
+                        ]),
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(answer) +
+                            "\n              "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "text-right" }, [
+                  _vm._v("カテゴリー:" + _vm._s(_vm.categoryName))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("section", [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("p", [
+                  _c(
+                    "button",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.isAlreadyAnswered,
+                          expression: "isAlreadyAnswered"
+                        }
+                      ],
+                      staticClass: "quiz-correct-answer",
+                      attrs: { disabled: "" }
+                    },
+                    [_vm._v(_vm._s(_vm.correctAnswerNo))]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.isAlreadyAnswered,
+                        expression: "!isAlreadyAnswered"
+                      }
+                    ],
+                    on: {
+                      click: function($event) {
+                        return _vm.goanswer(0)
+                      }
+                    }
+                  },
+                  [_vm._v("正解を表示する")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.isCorrect,
+                        expression: "isCorrect"
+                      }
+                    ],
+                    staticClass: "alert alert-info"
+                  },
+                  [_c("strong", [_vm._v("正解!")])]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.isMistake,
+                        expression: "isMistake"
+                      }
+                    ],
+                    staticClass: "alert alert-danger"
+                  },
+                  [_c("strong", [_vm._v("不正解!")])]
+                )
+              ]),
+              _vm._v(" "),
+              _c("section", [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.isAlreadyAnswered,
+                        expression: "isAlreadyAnswered"
+                      }
+                    ],
+                    staticClass: "quiz-commentary__text",
+                    staticStyle: {
+                      "white-space": "pre-wrap",
+                      "word-wrap": "break-word"
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.commentary))]
+                ),
+                _vm._v(" "),
+                !_vm.isQuizFinish
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary center-block",
+                        attrs: { type: "button" },
+                        on: { click: _vm.goNextQuiz }
+                      },
+                      [_vm._v("次の問題へ")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.isQuizFinish
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "center-block",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#modal-result"
+                        },
+                        on: { click: _vm.showResult }
+                      },
+                      [_vm._v("結果を見る")]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("the-sidebar")
+          ],
           1
         )
       ]),
@@ -1147,134 +1361,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("article", { staticClass: "col-md-8 col-xs-12" }, [
-      _c("section", [
-        _c("h2", { staticClass: "quiz-question-h2" }, [
-          _c("img", {
-            staticClass: "quiz-question__logo",
-            attrs: { src: "/images/what-is-mark.png" }
-          }),
-          _vm._v("\n            第1問\n          ")
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v("正しい敬語を使った表現を１つ選んでください。")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "quiz-answer__list" }, [
-          _c("ul", [
-            _c("li", [
-              _c("a", [_c("button", [_vm._v("1")])]),
-              _vm._v(
-                "\n                受付でうかがってください。\n              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", [_c("button", [_vm._v("2")])]),
-              _vm._v(
-                "\n                課長がおっしゃったように、ファイルをご覧ください。\n              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", [_c("button", [_vm._v("3")])]),
-              _vm._v(
-                "\n                部長が申されたように進めていきます。\n              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", [_c("button", [_vm._v("4")])]),
-              _vm._v(
-                "\n                ○△商事の□□様がお越しになられました。\n              "
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", [
-        _c("h2", { staticClass: "quiz-correct-h2" }, [
-          _c("img", {
-            staticClass: "quiz-correct__logo",
-            attrs: { src: "/images/correct-mark.png" }
-          }),
-          _vm._v("正解\n          ")
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("button", { staticClass: "quiz-correct-answer" }, [_vm._v("1")])
-        ]),
-        _vm._v(" "),
-        _c("button", [_vm._v("正解を表示する")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "alert alert-info" }, [
-          _c("strong", [_vm._v("正解!")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "alert alert-danger" }, [
-          _c("strong", [_vm._v("不正解!")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", [
-        _c("h2", { staticClass: "quiz-commentary-h2" }, [
-          _c("img", {
-            staticClass: "quiz-commentary__logo",
-            attrs: { src: "/images/commentary-mark.png" }
-          }),
-          _vm._v("解説\n          ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "quiz-commentary__text" }, [
-          _vm._v("\n            1）3）4）は、どこが間違っていたの？ "),
-          _c("br"),
-          _vm._v("\n            1）受付でうかがってください。"),
-          _c("br"),
-          _vm._v(
-            "\n            「うかがう」は謙譲語。謙譲語は自分または身内（自分の会社も含みます）の者に使う言葉で、相手に使うのは間違いです。"
-          ),
-          _c("br"),
-          _vm._v("\n            『受付でお尋ねください。』が正解です。"),
-          _c("br"),
-          _c("br"),
-          _vm._v("\n            3）部長が申されたように進めていきます。"),
-          _c("br"),
-          _vm._v(
-            "\n            「申す」も謙譲語です。謙譲語にれる・られるを付けても尊敬語にはなりません。"
-          ),
-          _c("br"),
-          _vm._v(
-            "\n            『社長がおっしゃったように進めていきます。』が正解です。"
-          ),
-          _c("br"),
-          _c("br"),
-          _vm._v("\n            4）○△商事の□□様がお越しになられました。"),
-          _c("br"),
-          _vm._v(
-            "\n            「なられました」は二重敬語の典型的な表現です。"
-          ),
-          _c("br"),
-          _vm._v(
-            "\n            『○△商事の□□様がお越しになりました。』が正解です。"
-          ),
-          _c("br")
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary center-block",
-            attrs: { type: "button" }
-          },
-          [_vm._v("次の問題へ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "center-block", attrs: { type: "button" } },
-          [_vm._v("結果を見る")]
-        )
-      ])
+    return _c("h2", { staticClass: "quiz-correct-h2" }, [
+      _c("img", {
+        staticClass: "quiz-correct__logo",
+        attrs: { src: "/images/correct-mark.png" }
+      }),
+      _vm._v("正解\n          ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "quiz-commentary-h2" }, [
+      _c("img", {
+        staticClass: "quiz-commentary__logo",
+        attrs: { src: "/images/commentary-mark.png" }
+      }),
+      _vm._v("解説\n          ")
     ])
   }
 ]
