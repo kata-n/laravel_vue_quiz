@@ -1,6 +1,5 @@
 <template>
   <div>
-    <the-header></the-header>
     <main>
       <div class="container">
         <article class="col-md-8 col-xs-12">
@@ -36,7 +35,7 @@
                 disabled
               >{{ correctAnswerNo }}</button>
             </p>
-            <button @click="goanswer(0)" v-show="!isAlreadyAnswered">正解を表示する</button>
+            <button @click="goAnswer(0)" v-show="!isAlreadyAnswered">正解を表示する</button>
             <div class="alert alert-info" v-show="isCorrect">
               <strong>正解!</strong>
             </div>
@@ -72,20 +71,18 @@
         <the-sidebar></the-sidebar>
       </div>
     </main>
-    <the-footer></the-footer>
+    <the-modal :correctPercentageObject="correctPercentageObject" ref="modal"></the-modal>
   </div>
 </template>
 
 <script>
-import TheHeader from "../layout/TheHeader";
-import TheFooter from "../layout/TheFooter";
 import TheSidebar from "../layout/TheSidebar";
+import TheModal from "../module/TheModal";
 
 export default {
   components: {
-    TheHeader,
-    TheFooter,
-    TheSidebar
+    TheSidebar,
+    TheModal
   },
 
   data() {
@@ -103,7 +100,8 @@ export default {
       isQuizFinish: false,
       score: 0,
       quizNumber: 1,
-      categoryName: ""
+      categoryName: "",
+      correctPercentageObject: {}
     };
   },
   mounted() {
@@ -115,6 +113,27 @@ export default {
     });
   },
   methods: {
+    goAnswer(selectAnswerNum) {
+      if (selectAnswerNum === 0) {
+        this.isCorrect = false;
+        this.isMistake = false;
+      } else if (selectAnswerNum === Number(this.correctAnswerNo)) {
+        //正解の場合
+        this.isCorrect = true;
+        this.isMistake = false;
+        this.score += 1;
+      } else {
+        //不正解の場合
+        this.isMistake = true;
+        this.isCorrect = false;
+      }
+      this.isAlreadyAnswered = true;
+
+      //10回以上回答している場合はクイズを終了
+      if (this.quizNumber >= 10) {
+        this.endQuiz();
+      }
+    },
     findNextQuiz(quizNumber) {
       this.title = this.quizData[quizNumber].title;
       this.answers = [
@@ -126,6 +145,32 @@ export default {
       this.commentary = this.quizData[quizNumber].answer.commentary;
       this.correctAnswerNo = this.quizData[quizNumber].answer.correct_answer_no;
       this.categoryName = this.quizData[quizNumber].category.name;
+    },
+    goNextQuiz() {
+      //次の問題へをクリック
+      if (this.quizNumber >= 10) {
+        //10問終わったらクイズを終了する
+        this.endQuiz();
+      } else {
+        // 次のクイズを表示し、クイズ番号を加算、alert-info、alert-danger、解説を非表示にする
+        this.findNextQuiz(this.quizNumber);
+        this.quizNumber += 1;
+        this.isCorrect = false;
+        this.isMistake = false;
+        this.isAlreadyAnswered = false;
+      }
+    },
+    endQuiz() {
+      this.isQuizFinish = true;
+      this.answerNo = "-";
+      this.isAlreadyAnswered = true;
+      this.correctPercentageObject = {
+        correctScore: this.score,
+        mistakeScore: 10 - this.score
+      };
+    },
+    showResult() {
+      this.$refs.modal.render();
     }
   }
 };
