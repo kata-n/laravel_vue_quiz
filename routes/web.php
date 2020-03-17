@@ -22,3 +22,5 @@ Route::get('/register', function () {
 });
 
 Route::post('/register', 'Auth\RegisterController@register');
+
+Route::post('/insertRanking', 'Web\RankingController@insertRanking');
