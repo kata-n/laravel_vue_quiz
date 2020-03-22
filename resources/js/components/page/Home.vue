@@ -91,6 +91,16 @@ export default {
     goQuiz() {
       this.$router.push("/quiz?categories=" + this.categories);
     }
+  },
+  checkAll() {
+    let val = [];
+    this.category.forEach(element => {
+      val.push(element.id);
+    });
+    this.categories = val;
+  },
+  checkAllOff() {
+    this.categories = [];
   }
 };
 </script>
