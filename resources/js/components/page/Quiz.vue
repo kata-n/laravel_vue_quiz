@@ -65,7 +65,7 @@
               data-target="#modal-result"
               v-if="isQuizFinish"
               @click="showResult"
-            >結果を見る</button>
+            >結果を表示する</button>
           </section>
         </article>
         <the-sidebar></the-sidebar>
